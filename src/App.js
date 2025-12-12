@@ -4,10 +4,9 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    console.log("App rendered"),
     (
       <>
-        <Navbar title="My App"></Navbar>
+        <Navbar title="My App"  Home="Home"></Navbar>
       </>
     )
   );

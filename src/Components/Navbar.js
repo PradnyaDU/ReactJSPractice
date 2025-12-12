@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function Navbar({title="set title"}) {
-    console.log("Navbar rendered");
+export default function Navbar({title="set title" , Home="set Home"}) {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -27,7 +26,7 @@ export default function Navbar({title="set title"}) {
             >
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/">
-                  Home
+                  {Home}
                 </a>
               </li>
               <li className="nav-item">
