@@ -4,11 +4,24 @@ import {useState} from 'react'
 export default function TextForm() {
   const [text, settext] = useState("This is default text");
   function onbtnclick() {
-    settext("Text has been changed");
+    let newText = text.toUpperCase();
+    settext(newText);
   }
-    function onChangeFunc(event) {
-        settext(event.target.value);
+    function onbtnclicklow() {
+      let newText = text.toLowerCase();
+      settext(newText);
     }
+  function onChangeFunc(event) {
+    settext(event.target.value);
+  }
+  function getWordAndCharCount() {
+    const charCount = text.length;
+    const wordCount = text
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0).length;
+    return { charCount, wordCount };
+  }
   return (
     <>
       <div className="mb-3">
@@ -20,8 +33,21 @@ export default function TextForm() {
           id="exampleFormControlTextarea1"
           rows="3"
           value={text}
+          onChange={onChangeFunc}
         ></textarea>
-        <button className="btn btn-primary" onClick={onbtnclick} onChange={onChangeFunc}>Submit</button>
+        <button className="btn btn-primary my-3 mx-2" onClick={onbtnclick}>
+          Click to UPPERCASE
+        </button>
+        <button className="btn btn-primary" onClick={onbtnclicklow}>
+          Click to lowercase
+        </button>
+
+        <div className="mt-3">
+          <p>
+            Words: {getWordAndCharCount().wordCount} | Characters:{" "}
+            {getWordAndCharCount().charCount}
+          </p>
+        </div>
       </div>
     </>
   );
