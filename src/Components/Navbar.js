@@ -1,6 +1,4 @@
-import PropTypes from "prop-types";
-
-export default function Navbar({title="set title" , Home="set Home", onNavClick}) {
+export default function Navbar({title="set title" , Home="set Home", onNavClick, theme = 'light'}) {
     const handleHomeClick = (e) => {
         e.preventDefault();
         onNavClick("home");
@@ -13,7 +11,7 @@ export default function Navbar({title="set title" , Home="set Home", onNavClick}
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg ${theme === 'light' ? 'navbar-light bg-light' : 'navbar-dark bg-dark'}`}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/" onClick={handleHomeClick}>
                         {title}
@@ -88,9 +86,10 @@ export default function Navbar({title="set title" , Home="set Home", onNavClick}
                                 placeholder="Search"
                                 aria-label="Search"
                             />
-                            <button className="btn btn-outline-light" type="submit">
+                            <button className={theme === 'light' ? 'btn btn-outline-dark' : 'btn btn-outline-light'} type="submit">
                                 Search
-                            </button>{" "}
+                            </button>
+                        
                         </form>
                     </div>
                 </div>

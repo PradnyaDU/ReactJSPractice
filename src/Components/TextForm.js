@@ -1,9 +1,7 @@
-import { func } from 'prop-types';
 import {useState} from 'react'
 
-export default function TextForm() {
+export default function TextForm({ theme = 'light', themeStyles = {} }) {
   const [text, settext] = useState("This is default text");
-  const [textColor, setTextColor] = useState("black");
   function onbtnclick() {
     let newText = text.toUpperCase();
     settext(newText);
@@ -23,9 +21,7 @@ export default function TextForm() {
       .filter((word) => word.length > 0).length;
     return { charCount, wordCount };
   }
-  function changeTextColor() {
-    setTextColor(textColor === "black" ? "red" : "black");
-  }
+  // Text color now follows the global theme passed from App
   return (
     <>
       <div className="mb-3">
@@ -38,7 +34,7 @@ export default function TextForm() {
           rows="3"
           value={text}
           onChange={onChangeFunc}
-          style={{ color: textColor }}
+          style={themeStyles.textareaStyle}
         ></textarea>
         <button className="btn btn-primary my-3 mx-2" onClick={onbtnclick}>
           Click to UPPERCASE
@@ -46,9 +42,7 @@ export default function TextForm() {
         <button className="btn btn-primary" onClick={onbtnclicklow}>
           Click to lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={changeTextColor}>
-          Click to change text color
-        </button>
+        
 
         <div className="mt-3">
           <p>
