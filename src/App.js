@@ -2,13 +2,18 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
+import About from "./Components/About";
+import {useState} from 'react'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("home");
+
   return (
     <>
-      <Navbar title="My App" Home="Home"></Navbar>
+      <Navbar title="My App" Home="Home" onNavClick={setCurrentPage}></Navbar>
       <div className="container">
-        <TextForm></TextForm>
+        {currentPage === "home" && <TextForm></TextForm>}
+        {currentPage === "about" && <About></About>}
       </div>
     </>
   );

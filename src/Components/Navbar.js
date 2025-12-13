@@ -1,11 +1,21 @@
 import PropTypes from "prop-types";
 
-export default function Navbar({title="set title" , Home="set Home"}) {
+export default function Navbar({title="set title" , Home="set Home", onNavClick}) {
+    const handleHomeClick = (e) => {
+        e.preventDefault();
+        onNavClick("home");
+    };
+
+    const handleAboutClick = (e) => {
+        e.preventDefault();
+        onNavClick("about");
+    };
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">
+                    <a className="navbar-brand" href="/" onClick={handleHomeClick}>
                         {title}
                     </a>
                     <button
@@ -25,13 +35,13 @@ export default function Navbar({title="set title" , Home="set Home"}) {
                             style={{ "--bs-scroll-height": "100px" }}
                         >
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/">
+                                <a className="nav-link active" aria-current="page" href="/" onClick={handleHomeClick}>
                                     {Home}
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">
-                                    Link
+                                <a className="nav-link" href="#about" onClick={handleAboutClick}>
+                                    About
                                 </a>
                             </li>
                             <li className="nav-item dropdown">
