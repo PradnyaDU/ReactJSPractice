@@ -10,9 +10,15 @@ export default function TextForm({ theme = 'light', themeStyles = {} }) {
       let newText = text.toLowerCase();
       settext(newText);
     }
-  function onChangeFunc(event) {
+function onChangeFunc(event) {
     settext(event.target.value);
-  }
+}
+function onbtnclicktxtclr() {
+    const ta = document.getElementById("exampleFormControlTextarea1");
+    if (ta) {
+        ta.style.color = ta.style.color === "red" ? "black" : "red";
+    }
+}
   function getWordAndCharCount() {
     const charCount = text.length;
     const wordCount = text
@@ -42,7 +48,9 @@ export default function TextForm({ theme = 'light', themeStyles = {} }) {
         <button className="btn btn-primary" onClick={onbtnclicklow}>
           Click to lowercase
         </button>
-        
+        <button className="btn btn-primary mx-2" onClick={onbtnclicktxtclr} >
+          Click to change color of text
+        </button>
 
         <div className="mt-3">
           <p>
