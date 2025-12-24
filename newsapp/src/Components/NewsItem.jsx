@@ -13,7 +13,7 @@ export default function NewsItem(props) {
   } = props;
 
   return (
-    <div className="col-lg-4 col-md-6 col-sm-12 my-3">
+<div className="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div className="card h-100 shadow-sm">
         <div className="card-body d-flex flex-column">
           {

@@ -6,21 +6,25 @@ import Spinner from "./Spinner";
 export class News extends Component {
   articles = [];
 
-
   constructor() {
     super();
     this.state = {
       articles: this.articles,
       page: 1,
       pageSize: 12,
-      loading: false,
+      showSpinner: true,
+      loading: true,
     };
   }
 
   async componentDidMount() {
     // API call can be made here if needed
     let url =
-      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
+       "https://newsapi.org/v2/top-headlines?category=" +
+      this.props.category +
+      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+      this.state.page +
+      "&pageSize=" +
       this.state.pageSize;
     const response = await fetch(url);
     const data = await response.json();
@@ -33,26 +37,34 @@ export class News extends Component {
     console.log("this is previous");
 
     let url =
-      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
+      "https://newsapi.org/v2/top-headlines?category=" +
+      this.props.category +
+      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
       (this.state.page - 1) +
       "&pageSize=" +
       this.state.pageSize;
-          this.setState({ loading: true });
+    this.setState({ loading: true, showSpinner: true });
 
     const response = await fetch(url);
     const data = await response.json();
-    this.setState({ articles: data.articles, page: this.state.page - 1, loading: false });
+    this.setState({
+      articles: data.articles,
+      page: this.state.page - 1,
+      loading: false,
+    });
   };
 
   handleOnNextClick = async () => {
     console.log("this is next");
 
     let url =
-      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
+      "https://newsapi.org/v2/top-headlines?category=" +
+      this.props.category +
+      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
       (this.state.page + 1) +
       "&pageSize=" +
       this.state.pageSize;
-    this.setState({ loading: true });
+    this.setState({ loading: true, showSpinner: true });
     const response = await fetch(url);
     const data = await response.json();
 
@@ -66,7 +78,7 @@ export class News extends Component {
   render() {
     return (
       <>
-        {this.state.loading && <Spinner />}
+        {this.state.loading}
         <div className="container my-4 news-container">
           <div className="text-center mb-4 news-list">
             <h2>Latest News</h2>
@@ -76,7 +88,7 @@ export class News extends Component {
           <div className="row">
             {this.state.articles.length === 0 ? (
               <div className="text-center w-100">
-                <h4>No News Found</h4>
+                {this.state.showSpinner && <Spinner />}
               </div>
             ) : (
               this.state.articles.map((article) => (
