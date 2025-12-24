@@ -10,15 +10,14 @@ export default class App extends React.Component {
         <Navbar />
 
         <Routes>
-          <Route path="/" />
-          <Route path="/business" />
-          <Route path="/entertainment" />
-          <Route path="/health" />
-          <Route path="/science" />
-          <Route path="/sports" />
-          <Route path="/technology" />
+          <Route path="/" element={<News key="general" category="general" />} />
+          <Route path="/business" element={<News key="business" category="business" />} />
+          <Route path="/entertainment" element={<News key="entertainment" category="entertainment" />} />
+          <Route path="/health" element={<News key="health" category="health" />} />
+          <Route path="/science" element={<News key="science" category="science" />} />
+          <Route path="/sports" element={<News key="sports" category="sports" />} />
+          <Route path="/technology" element={<News key="technology" category="technology" />} />
         </Routes>
-        <News />
       </>
     );
   }

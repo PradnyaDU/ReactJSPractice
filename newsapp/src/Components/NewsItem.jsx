@@ -9,7 +9,7 @@ export default function NewsItem(props) {
     author,
     date,
     urlToImage,
-    source
+    source,
   } = props;
 
   return (

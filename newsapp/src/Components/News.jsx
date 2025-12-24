@@ -5,6 +5,8 @@ import Spinner from "./Spinner";
 
 export class News extends Component {
   articles = [];
+
+
   constructor() {
     super();
     this.state = {
@@ -18,10 +20,11 @@ export class News extends Component {
   async componentDidMount() {
     // API call can be made here if needed
     let url =
-      "https://newsapi.org/v2/everything?q=apple&from=2025-12-21&to=2025-12-21&sortBy=popularity&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
+      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
       this.state.pageSize;
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data);
     this.setState({ articles: data.articles, totalResults: data.totalResults });
   }
 
@@ -30,7 +33,7 @@ export class News extends Component {
     console.log("this is previous");
 
     let url =
-      "https://newsapi.org/v2/everything?q=apple&from=2025-12-21&to=2025-12-21&sortBy=popularity&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
       (this.state.page - 1) +
       "&pageSize=" +
       this.state.pageSize;
@@ -45,7 +48,7 @@ export class News extends Component {
     console.log("this is next");
 
     let url =
-      "https://newsapi.org/v2/everything?q=apple&from=2025-12-21&to=2025-12-21&sortBy=popularity&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+      "https://newsapi.org/v2/top-headlines?category=" + this.props.category + "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&pageSize=" +
       (this.state.page + 1) +
       "&pageSize=" +
       this.state.pageSize;
