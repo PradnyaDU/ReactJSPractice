@@ -2,18 +2,11 @@ import React from "react";
 import "../ComponentsCSS/NewsItem.css";
 
 const NewsItem=(props) => {
-  const {
-    title,
-    description,
-    newsUrl,
-    author,
-    date,
-    urlToImage,
-    source,
-  } = props;
-
+  const { title, description, newsUrl, author, date, urlToImage, source } =
+    props;
+  if (!title) return null; // ⬅️ VERY IMPORTANT
   return (
-<div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div className="card h-100 shadow-sm">
         <div className="card-body d-flex flex-column">
           {

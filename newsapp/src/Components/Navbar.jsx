@@ -4,7 +4,7 @@ import "../ComponentsCSS/NavbarCSS.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar fixed-top">
       <div className="navbar-container">
         <h2 className="logo">
             <Link to="/">NewsHub</Link>
