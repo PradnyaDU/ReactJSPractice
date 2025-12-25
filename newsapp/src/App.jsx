@@ -2,19 +2,17 @@ import React from "react";
 import Navbar from "./Components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import News from "./Components/News";
+import { useState } from "react";
 import LoadingBar from "react-top-loading-bar";
 
-export default class App extends React.Component {
-  state = {
-    progress: 0,
-  };
+ const App = ()=>{
+  const [progress, setProgress] = useState(0);
 
-  setProgress =async (progress) => {
-    this.setState({ progress });
+  const setProgressAsync =async (progress) => {
+    setProgress(progress);
   };
-  render() {
-    return (
-      <>
+  return (
+    <>
         <Navbar />
 
         <Routes>
@@ -22,7 +20,7 @@ export default class App extends React.Component {
             path="/"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="general"
                 category="general"
               />
@@ -32,7 +30,17 @@ export default class App extends React.Component {
             path="/business"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
+                key="business"
+                category="business"
+              />
+            }
+          />
+          <Route
+            path="/business"
+            element={
+              <News
+                setProgress={setProgressAsync}
                 key="business"
                 category="business"
               />
@@ -42,7 +50,7 @@ export default class App extends React.Component {
             path="/entertainment"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="entertainment"
                 category="entertainment"
               />
@@ -52,7 +60,7 @@ export default class App extends React.Component {
             path="/health"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="health"
                 category="health"
               />
@@ -62,7 +70,7 @@ export default class App extends React.Component {
             path="/science"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="science"
                 category="science"
               />
@@ -72,7 +80,7 @@ export default class App extends React.Component {
             path="/sports"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="sports"
                 category="sports"
               />
@@ -82,19 +90,20 @@ export default class App extends React.Component {
             path="/technology"
             element={
               <News
-                setProgress={this.setProgress}
+                setProgress={setProgressAsync}
                 key="technology"
                 category="technology"
               />
             }
           />
         </Routes>
-        <LoadingBar height={3} color="#f97316" progress={this.state.progress} />
+        <LoadingBar height={3} color="#f97316" progress={progress} />
         <div
           className="loading-dot"
-          style={{ left: `${this.state.progress}%` }}
+          style={{ left: `${progress}%` }}
         ></div>
       </>
     );
   }
-}
+
+export default App;

@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../ComponentsCSS/NavbarCSS.css";
 
-export default class Navbar extends React.Component {
-  render() {
-    return (
-      <nav className="navbar">
-        <div className="navbar-container">
-          <h2 className="logo">
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <h2 className="logo">
             <Link to="/">NewsHub</Link>
         </h2>
 
@@ -24,4 +23,4 @@ export default class Navbar extends React.Component {
     </nav>
   );
 }
-}
+export default Navbar;

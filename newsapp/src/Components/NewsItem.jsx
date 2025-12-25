@@ -1,7 +1,7 @@
 import React from "react";
 import "../ComponentsCSS/NewsItem.css";
 
-export default function NewsItem(props) {
+const NewsItem=(props) => {
   const {
     title,
     description,
@@ -68,3 +68,4 @@ export default function NewsItem(props) {
     </div>
   );
 }
+export default NewsItem;
