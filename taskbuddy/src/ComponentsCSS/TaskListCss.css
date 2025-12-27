@@ -1,0 +1,44 @@
+/* Full page background */
+.page-container {
+  min-height: 100vh;
+  background-color: #f4f6f8;
+
+  display: flex;
+  justify-content: center;   /* horizontal */
+  align-items: center;       /* vertical */
+}
+
+
+/* Task card aligned at top */
+.task-wrapper {
+  max-width: 450px;
+  width: 100%;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Task item row */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: background 0.2s;
+}
+
+.task-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Add button */
+.add-task-btn {
+  width: 100%;
+  margin-top: 15px;
+  font-weight: 500;
+}
