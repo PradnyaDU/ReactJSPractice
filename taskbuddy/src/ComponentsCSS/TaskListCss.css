@@ -1,17 +1,25 @@
-/* Full page background */
 .page-container {
   min-height: 100vh;
-  background-color: #f4f6f8;
+
+  /* Creative but clean background */
+  background: linear-gradient(
+    135deg,
+    #f5f7fa 0%,
+    #e4ecf7 50%,
+    #fdfefe 100%
+  );
 
   display: flex;
-  justify-content: center;   /* horizontal */
-  align-items: center;       /* vertical */
+  justify-content: center;   /* center horizontally */
+  align-items: flex-start;   /* move to top */
+
+  padding-top: 20px;         /* controls how far from top */
 }
 
 
 /* Task card aligned at top */
 .task-wrapper {
-  max-width: 450px;
+  max-width: 750px;
   width: 100%;
   background: #ffffff;
   padding: 25px;
