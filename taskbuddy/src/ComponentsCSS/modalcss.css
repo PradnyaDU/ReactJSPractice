@@ -1,0 +1,103 @@
+/* MODAL CONTAINER */
+.orange-modal {
+  border-radius: 20px;
+  overflow: hidden;
+  animation: pop 0.3s ease;
+}
+
+/* HEADER */
+.orange-header {
+  background: linear-gradient(135deg, #e58039, #ff9f1c);
+  color: white;
+  padding: 20px;
+  position: relative;
+}
+
+.orange-header .subtitle {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* BODY */
+.orange-body {
+  padding: 25px;
+  background: #fffaf4;
+}
+
+.label-text {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ff7a18;
+}
+
+/* INPUT */
+.orange-input {
+  border-radius: 12px;
+  padding: 14px;
+  border: 2px solid #ffd2a8;
+}
+
+.orange-input:focus {
+  border-color: #ff7a18;
+  box-shadow: 0 0 0 0.2rem rgba(255, 122, 24, 0.25);
+}
+
+/* FOOTER */
+.orange-footer {
+  border: none;
+  padding: 20px;
+  background: #fffaf4;
+}
+
+/* BUTTONS */
+.cancel-btn {
+  background: transparent;
+  border: none;
+  color: #ff7a18;
+  font-weight: 600;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(255, 122, 24, 0.35);
+}
+
+/* ANIMATION */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

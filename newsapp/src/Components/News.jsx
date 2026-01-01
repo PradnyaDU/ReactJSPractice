@@ -10,7 +10,7 @@
     const [pageSize, setPageSize] = useState(12);
     const [showSpinner, setShowSpinner] = useState(true);
     const [loading, setLoading] = useState(true);
-    const APIKey = process.env.REACT_APP_MY_NEWS_API_KEY;
+    const APIKey = "1768df9ff73b44af83673157761ad39b";
 
     const updateNews = async (pageNumber) => {
       props.setProgress(0);

@@ -1,52 +1,90 @@
+/* BACKGROUND */
 .page-container {
   min-height: 100vh;
-
-  /* Creative but clean background */
-  background: linear-gradient(
-    135deg,
-    #f5f7fa 0%,
-    #e4ecf7 50%,
-    #fdfefe 100%
-  );
-
+  background: linear-gradient(135deg, #240046, #5a189a);
   display: flex;
-  justify-content: center;   /* center horizontally */
-  align-items: flex-start;   /* move to top */
-
-  padding-top: 20px;         /* controls how far from top */
+  justify-content: center;
+  align-items: center;
+  padding: 40px 15px;
 }
 
-
-/* Task card aligned at top */
+/* CARD */
 .task-wrapper {
-  max-width: 750px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 32px;
   width: 100%;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 480px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  color: #fff;
 }
 
+/* HEADING */
+.task-wrapper h4 {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
 
-/* Task item row */
+/* TASK ITEM */
 .task-item {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 12px 14px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  transition: background 0.2s;
+  transition: all 0.25s ease;
 }
 
 .task-item:hover {
-  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Add button */
+/* TASK TEXT */
+.task-item span {
+  font-weight: 500;
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  border: none;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #5a189a, #7b2cbf);
+  border: none;
+}
+
+/* REMOVE ORANGE FROM DELETE */
+.btn-danger {
+  background: linear-gradient(135deg, #c9184a, #720026);
+  border: none;
+}
+
+/* ADD TASK BUTTON — AMBER ACCENT */
 .add-task-btn {
   width: 100%;
-  margin-top: 15px;
-  font-weight: 500;
+  margin-top: 25px;
+  background: linear-gradient(135deg, #ffb703, #ffd166);
+  color: #3a0ca3;
+  border: none;
+  border-radius: 16px;
+  padding: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.add-task-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(255, 183, 3, 0.6);
 }
