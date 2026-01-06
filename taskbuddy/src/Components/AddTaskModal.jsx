@@ -2,19 +2,10 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "../ComponentsCSS/modalcss.css";
 
-export const AddTaskModal = ({task, show, onClose, onAdd ,onSave}) => {
+export const AddTaskModal = ({ show, onClose, onSave }) => {
   const [taskName, setTaskName] = useState("");
 
-  const handleAdd = () => {
-    if (!taskName.trim()) return;
-    onAdd(taskName);
-    setTaskName("");
-  };
-
-  const handleReset=()=>
-  {
-    setTaskName("");
-  }
+ 
   return (
     <Modal
       show={show}
@@ -63,12 +54,9 @@ export const AddTaskModal = ({task, show, onClose, onAdd ,onSave}) => {
           }}
           onClick={() => onSave(taskName)}
         >
-          {task ? "Save Changes" : "Add Task"}
+          Add Task
         </Button>
-         <Button
-         className="danger"
-          onClick={() => handleReset()}
-        >
+        <Button className="danger" onClick={() => setTaskName("")}>
           Reset
         </Button>
       </Modal.Footer>

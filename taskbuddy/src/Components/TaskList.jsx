@@ -4,7 +4,7 @@ import { TaskCard } from "./TaskCard";
 import { AddTaskModal } from "./AddTaskModal";
 import { EditTaskModal } from "./EditTaskModal";
 
-export const TaskList = ({info}) => {
+export const TaskList = ({ info }) => {
   const [tasks, settasks] = useState([
     { Name: "Sample Task 1", id: 1, completed: false },
     { Name: "Sample Task 2", id: 2, completed: false },
@@ -12,12 +12,15 @@ export const TaskList = ({info}) => {
   ]);
 
   const [showModal, setShowModal] = useState(false);
-  const [mode, setMode] = useState("add");
   const [taskToEdit, setTaskToEdit] = useState(null);
 
   const handleEditTask = (task) => {
-    setMode("edit");
     setTaskToEdit(task);
+    setShowModal(true);
+  };
+
+  const handleAddTask = () => {
+    setTaskToEdit(null);
     setShowModal(true);
   };
 
@@ -35,32 +38,21 @@ export const TaskList = ({info}) => {
     );
   };
 
-  const handleAddTask = () => {
-    setMode("add");
-    setTaskToEdit(null);
-    setShowModal(true);
+  const handleSave = (data) => {
+    if (taskToEdit) {
+      settasks(tasks.map((task) => (task.id === data.id ? data : task)));
+    } else {
+      settasks([
+        ...tasks,
+        {
+          Name: data,
+          id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+          completed: false,
+        },
+      ]);
+    }
+    setShowModal(false);
   };
-
- const handleSave = (data) => {
-  if (mode === "add") {
-    settasks([
-      ...tasks,
-      {
-        Name: data,
-        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-        completed: false,
-      },
-    ]);
-  } else if (mode === "edit") {
-    settasks(
-      tasks.map((task) =>
-        task.id === data.id ? data : task
-      )
-    );
-  }
-  setShowModal(false);
-};
-
 
   return (
     <div className="page-container">
@@ -78,18 +70,18 @@ export const TaskList = ({info}) => {
         ))}
 
         {showModal &&
-          (mode === "add" ? (
-            <AddTaskModal
-              show={showModal}
-              onClose={() => setShowModal(false)}
-              onSave={handleSave}
-            />
-          ) : (
+          (taskToEdit ? (
             <EditTaskModal
-              show={showModal}
+              show
               onClose={() => setShowModal(false)}
               task={taskToEdit}
               onDelete={deleteTask}
+              onSave={handleSave}
+            />
+          ) : (
+            <AddTaskModal
+              show
+              onClose={() => setShowModal(false)}
               onSave={handleSave}
             />
           ))}

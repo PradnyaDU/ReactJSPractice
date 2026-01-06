@@ -22,12 +22,12 @@ export const EditTaskModal = ({ task, show, onClose, onSave, onDelete }) => {
     });
   };
 
-  const handleDelete = () => {
-    {
-      onDelete(task.id);
-      onClose();
-    }
-  };
+const handleDelete = () => {
+  if (!task) return;
+  onDelete(task.id);
+  onClose();
+};
+
 
   return (
     <Modal
