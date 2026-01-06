@@ -6,7 +6,8 @@ export const TaskCard = ({ task, deleteTask, markAsCompleted, handleEditTask,inf
     <>
       <div className="task-item" key={task.id}>
         <span className={task.completed ? "completed-task" : ""}>
-          {task.Name} {info}
+          {task.Name} 
+          {/* {info} */}
         </span>
 
         <div className="task-actions">

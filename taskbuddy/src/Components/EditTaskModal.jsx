@@ -23,7 +23,7 @@ export const EditTaskModal = ({ task, show, onClose, onSave, onDelete }) => {
   };
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
+    {
       onDelete(task.id);
       onClose();
     }

@@ -41,25 +41,26 @@ export const TaskList = ({info}) => {
     setShowModal(true);
   };
 
-  const handleSave = (taskName) => {
-    if (mode === "add") {
-      settasks([
-        ...tasks,
-        {
-          Name: taskName,
-          id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
-          completed: false,
-        },
-      ]);
-    } else if (mode === "edit") {
-      settasks(
-        tasks.map((task) =>
-          task.id === taskToEdit.id ? { ...task, Name: taskName } : task
-        )
-      );
-    }
-    setShowModal(false);
-  };
+ const handleSave = (data) => {
+  if (mode === "add") {
+    settasks([
+      ...tasks,
+      {
+        Name: data,
+        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+        completed: false,
+      },
+    ]);
+  } else if (mode === "edit") {
+    settasks(
+      tasks.map((task) =>
+        task.id === data.id ? data : task
+      )
+    );
+  }
+  setShowModal(false);
+};
+
 
   return (
     <div className="page-container">
@@ -76,23 +77,22 @@ export const TaskList = ({info}) => {
           />
         ))}
 
-       {showModal && (
-  mode === "add" ? (
-    <AddTaskModal
-      show={showModal}
-      onClose={() => setShowModal(false)}
-      onSave={handleSave}
-    />
-  ) : (
-    <EditTaskModal
-      show={showModal}
-      onClose={() => setShowModal(false)}
-      task={taskToEdit}
-      onSave={handleSave}
-    />
-  )
-)}
-
+        {showModal &&
+          (mode === "add" ? (
+            <AddTaskModal
+              show={showModal}
+              onClose={() => setShowModal(false)}
+              onSave={handleSave}
+            />
+          ) : (
+            <EditTaskModal
+              show={showModal}
+              onClose={() => setShowModal(false)}
+              task={taskToEdit}
+              onDelete={deleteTask}
+              onSave={handleSave}
+            />
+          ))}
 
         <button
           className="btn btn-primary add-task-btn"
